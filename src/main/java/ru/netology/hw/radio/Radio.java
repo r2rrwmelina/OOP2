@@ -4,7 +4,7 @@ public class Radio {
     public int currentStationNum;
     public int currentVolume;
 
-    public void switchToNextStation() {
+    public void next() {
         if (currentStationNum >= 9) {
             currentStationNum = 0;
         } else {
@@ -12,7 +12,7 @@ public class Radio {
         }
     }
 
-    public void switchToPrevStation() {
+    public void prev() {
         if (currentStationNum <= 0) {
             currentStationNum = 9;
         } else {

@@ -11,7 +11,7 @@ public class RadioTest {
     public void shouldSwitchToTheNextStation() {
         Radio radio = new Radio();
         radio.currentStationNum = 2;
-        radio.switchToNextStation();
+        radio.next();
 
         int expected = 3;
         int actual = radio.currentStationNum;
@@ -23,7 +23,7 @@ public class RadioTest {
     public void shouldCycleToFirstStationFromLast() {
         Radio radio = new Radio();
         radio.currentStationNum = 9;
-        radio.switchToNextStation();
+        radio.next();
 
         int expected = 0;
         int actual = radio.currentStationNum;
@@ -35,7 +35,7 @@ public class RadioTest {
     public void shouldSwitchToThePrevStation() {
         Radio radio = new Radio();
         radio.currentStationNum = 5;
-        radio.switchToPrevStation();
+        radio.prev();
 
         int expected = 4;
         int actual = radio.currentStationNum;
@@ -47,7 +47,7 @@ public class RadioTest {
     public void shouldCycleToLastStationFromFirst() {
         Radio radio = new Radio();
         radio.currentStationNum = 0;
-        radio.switchToPrevStation();
+        radio.prev();
 
         int expected = 9;
         int actual = radio.currentStationNum;
