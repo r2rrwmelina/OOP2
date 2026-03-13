@@ -27,7 +27,7 @@ public class RadioTest {
 
     @Test
     public void shouldSwitchToThePrevStation() {
-         radio.setCurrentStationNum(5);
+        radio.setCurrentStationNum(5);
         radio.prev();
 
         Assertions.assertEquals(4, radio.getCurrentStationNum());

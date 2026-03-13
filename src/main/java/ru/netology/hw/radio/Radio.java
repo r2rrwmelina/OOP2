@@ -13,6 +13,7 @@ public class Radio {
         this.totalStations = 10;
         this.maxStation = 9;
     }
+
     public Radio(int totalStations) {
         this.totalStations = totalStations;
         this.maxStation = totalStations - 1;
