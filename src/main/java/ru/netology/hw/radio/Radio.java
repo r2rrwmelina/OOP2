@@ -1,31 +1,51 @@
 package ru.netology.hw.radio;
 
 public class Radio {
-    private int currentStationNum;
-    private int currentVolume;
+    private int totalStations;
+    private int maxStation;
+    private int minStation = 0;
+    private int currentStationNum = minStation;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int currentVolume = minVolume;
+
+    public Radio() {
+        this.totalStations = 10;
+        this.maxStation = 9;
+    }
+
+    public Radio(int totalStations) {
+        this.totalStations = totalStations;
+        this.maxStation = totalStations - 1;
+        this.currentStationNum = minStation;
+    }
+
+    public int getTotalStations() {
+        return totalStations;
+    }
 
     public int getCurrentStationNum() {
         return currentStationNum;
     }
 
     public void next() {
-        if (currentStationNum >= 9) {
-            currentStationNum = 0;
+        if (currentStationNum >= maxStation) {
+            currentStationNum = minStation;
         } else {
             currentStationNum += 1;
         }
     }
 
     public void prev() {
-        if (currentStationNum <= 0) {
-            currentStationNum = 9;
+        if (currentStationNum <= minStation) {
+            currentStationNum = maxStation;
         } else {
             currentStationNum -= 1;
         }
     }
 
     public void setCurrentStationNum(int newCurrentStationNum) {
-        if (newCurrentStationNum > 9 || newCurrentStationNum < 0) {
+        if (newCurrentStationNum > maxStation || newCurrentStationNum < minStation) {
             return;
         }
         currentStationNum = newCurrentStationNum;
@@ -40,13 +60,13 @@ public class Radio {
     }
 
     public void increaseVolume() {
-        if (currentVolume < 100) {
+        if (currentVolume < maxVolume) {
             currentVolume += 1;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume -= 1;
         }
     }
