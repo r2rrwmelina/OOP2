@@ -5,132 +5,90 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
 
+    Radio radio = new Radio();
+
     @Test
     public void shouldSwitchToTheNextStation() {
-        Radio radio = new Radio();
-        radio.setCurrentStationNum(2);
+        radio.setCurrentStationNum(7);
         radio.next();
 
-        int expected = 3;
-        int actual = radio.getCurrentStationNum();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(8, radio.getCurrentStationNum());
     }
 
     @Test
     public void shouldCycleToFirstStationFromLast() {
-        Radio radio = new Radio();
         radio.setCurrentStationNum(9);
         radio.next();
 
-        int expected = 0;
-        int actual = radio.getCurrentStationNum();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(0, radio.getCurrentStationNum());
     }
 
     @Test
     public void shouldSwitchToThePrevStation() {
-        Radio radio = new Radio();
         radio.setCurrentStationNum(5);
         radio.prev();
 
-        int expected = 4;
-        int actual = radio.getCurrentStationNum();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(4, radio.getCurrentStationNum());
     }
 
     @Test
     public void shouldCycleToLastStationFromFirst() {
-        Radio radio = new Radio();
         radio.setCurrentStationNum(0);
         radio.prev();
 
-        int expected = 9;
-        int actual = radio.getCurrentStationNum();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(9, radio.getCurrentStationNum());
     }
 
     @Test
     public void shouldSetStationWhenValueBetween0And9() {
-        Radio radio = new Radio();
         radio.setCurrentStationNum(7);
 
-        int expected = 7;
-        int actual = radio.getCurrentStationNum();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(7, radio.getCurrentStationNum());
     }
 
     @Test
     public void shouldNotSetStationWhenValueIsBelowMin() {
-        Radio radio = new Radio();
         radio.setCurrentStationNum(-15);
 
-        int expected = 0;
-        int actual = radio.getCurrentStationNum();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(0, radio.getCurrentStationNum());
     }
 
     @Test
     public void shouldNotSetStationWhenValueIsAboveMax() {
-        Radio radio = new Radio();
         radio.setCurrentStationNum(15);
 
-        int expected = 0;
-        int actual = radio.getCurrentStationNum();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(0, radio.getCurrentStationNum());
     }
 
     @Test
     public void shouldIncreaseCurrentVolume() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(87);
         radio.increaseVolume();
 
-        int expected = 88;
-        int actual = radio.getCurrentVolume();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(88, radio.getCurrentVolume());
     }
 
     @Test
     public void shouldNotIncreaseVolumeWhenValueIsAboveMax() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(100);
         radio.increaseVolume();
 
-        int expected = 100;
-        int actual = radio.getCurrentVolume();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(100, radio.getCurrentVolume());
     }
 
     @Test
     public void shouldDecreaseCurrentVolume() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(55);
         radio.decreaseVolume();
 
-        int expected = 54;
-        int actual = radio.getCurrentVolume();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(54, radio.getCurrentVolume());
     }
 
     @Test
     public void shouldNotDecreaseCurrentVolumeWhenValueIsMin() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(0);
         radio.decreaseVolume();
 
-        int expected = 0;
-        int actual = radio.getCurrentStationNum();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(0, radio.getCurrentStationNum());
     }
 }
